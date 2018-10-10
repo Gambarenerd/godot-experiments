@@ -15,8 +15,8 @@ var GOING_UP_ON_JUMP_TIME = 0.1
 var airborne_time = 0
 var jump_time = 0
 
-func _init():
-	pass
+func _ready():
+	$AnimatedSprite.play();
 
 func _integrate_forces(state):
 	
@@ -107,16 +107,3 @@ func is_on_left_wall(state):
 		if ci.dot(Vector2(1, 0)) > 0.6:
 			return true
 	return false
-
-
-
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

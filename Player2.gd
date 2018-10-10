@@ -15,8 +15,9 @@ var GOING_UP_ON_JUMP_TIME = 0.1
 var airborne_time = 0
 var jump_time = 0
 
-func _init():
-	pass
+
+func _ready():
+	$AnimatedSprite2.play();
 
 func _integrate_forces(state):
 
@@ -77,9 +78,9 @@ func _integrate_forces(state):
 			linear_velocity.x = sign(linear_velocity.x) * xv
 
 	if(move_left_key):
-		$AnimatedSprite.flip_h = true
+		$AnimatedSprite2.flip_h = true
 	elif(move_right_key):
-		$AnimatedSprite.flip_h = false
+		$AnimatedSprite2.flip_h = false
 
 	# Finally, apply gravity and set back the linear velocity
 	linear_velocity += state.get_total_gravity() * step
@@ -107,16 +108,3 @@ func is_on_left_wall(state):
 		if ci.dot(Vector2(1, 0)) > 0.6:
 			return true
 	return false
-
-
-
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
