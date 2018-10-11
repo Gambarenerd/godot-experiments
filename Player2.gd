@@ -14,10 +14,12 @@ var GOING_UP_ON_JUMP_TIME = 0.1
 
 var airborne_time = 0
 var jump_time = 0
-
+var reset = false
+var originalTransform
 
 func _ready():
 	$AnimatedSprite2.play();
+	originalTransform = get_transform()
 
 func _integrate_forces(state):
 
@@ -84,7 +86,10 @@ func _integrate_forces(state):
 
 	# Finally, apply gravity and set back the linear velocity
 	linear_velocity += state.get_total_gravity() * step
-	state.set_linear_velocity(linear_velocity)
+	state.set_linear_velocity(linear_velocity)	
+	if reset:
+		state.set_transform(originalTransform)
+		reset = false
 
 
 
