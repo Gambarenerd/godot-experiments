@@ -2,3 +2,4 @@
 *.x86_64
 *.pck
 export_presets.cfg
+export.cfg
